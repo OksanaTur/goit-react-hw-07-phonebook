@@ -8,6 +8,8 @@ import ContactsList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { TextApp, WrapperApp } from './App.styled';
 
+
+
 const App = () => {
   const isContacts = Boolean(useSelector(getFilteredContacts).length);
   const isLoading = useSelector(state => state.contacts.isLoading);

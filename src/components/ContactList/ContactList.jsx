@@ -5,18 +5,20 @@ import { fetchDeleteContact } from 'redux/contacts/contacts-operations';
 import { BtnList, Contact, Item, List, Number } from './ContactList.styled';
 
 const ContactsList = () => {
-    const filteredContacts = useSelector(getFilteredContacts);
-    const dispatch = useDispatch();
+  const filteredContacts = useSelector(getFilteredContacts);
 
-    const handleDeleteContact = id => {
-        dispatch(fetchDeleteContact(id));
-        toast.error('Contact deleted')
-    };
+  const dispatch = useDispatch();
 
-    const elements = filteredContacts.map(({ id, name, number }) => (
+  const handleDeleteContact = id => {
+    dispatch(fetchDeleteContact(id));
+
+    toast.error('Contact deleted');
+  };
+
+    const elements = filteredContacts.map(({ id, name, phone }) => (
       <Item key={id}>
       <Contact>
-        {name}: <Number>{number}</Number>{' '}
+        {name}: <Number>{phone}</Number>{' '}
       </Contact>
       <BtnList
         type="button"

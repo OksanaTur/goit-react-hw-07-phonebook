@@ -5,29 +5,29 @@ import initialState from './initialState';
 import { Btn, Text, Title, Wrapper } from './ContactForm.styled';
 
 const ContactForm = () => {
-    const [state, setState] = useState({ ...initialState });
-    const dispatch = useDispatch();
+  const [state, setState] = useState({ ...initialState });
 
-    useEffect(() => {
-        dispatch(fetchAllContacts());
-    }, [dispatch]);
+  const dispatch = useDispatch();
 
-    const handleSearch = e => {
-        const { name, value } = e.target;
-        setState(prevState => {
-            return { ...prevState, [name]: value };
-        })
-    };
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
 
-    const handleAddContact = e => {
-        e.preventDefault();
-        dispatch(fetchAddContact({ name, phone }));
+  const handleSearch = e => {
+    const { name, value } = e.target;
+    setState(prevState => {
+      return { ...prevState, [name]: value };
+    });
+  };
 
-        setState({ ...initialState })
-    };
+  const handleAddContact = e => {
+    e.preventDefault();
+    dispatch(fetchAddContact({ name, phone }));
 
-    const { name, phone } = state;
+    setState({ ...initialState });
+  };
 
+  const { name, phone } = state;
     return (
         <Wrapper onSubmit={handleAddContact}>
             <Title>
